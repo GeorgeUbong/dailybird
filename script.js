@@ -15,7 +15,7 @@ const getNews = async () => {
     displayNews();
   } catch (error) {
     console.error('Error fetching news:', error);
-    showError('You seem to be disconnected. Retry'); // Display error message
+    showError('You seem to be disconnecteding. Retry'); // Display error message
   }
 };
 
