@@ -1,26 +1,36 @@
 const apiKey = '0ff106280b544f1e85c8824e6c53d9ff'; // Replace with your News API key
 const newsContainer = document.getElementById('news-container');
-const updateInterval = 1 * 60 * 60 * 1000; // 1 hour in milliseconds
+const loadingIndicator = document.getElementById('loading-indicator'); // Assuming you have this element in your HTML
+const updateInterval = 2 * 60 * 60 * 1000; // 1 hour in milliseconds
 
 let currentNews = [];
 
 const getNews = async () => {
   try {
-    const response = await fetch(`https://newsapi.org/v2/top-headlines?country=us&apiKey=${apiKey}`);
-    const data = await response.json();
+    loadingIndicator.style.display = 'block'; // Show loading indicator
+
+    const response = await fetch(`https://newsapi.org/v2/top-headlines?country=us&apiKey=${apiKey}`, {
+      timeout: 10000, // Set a 10-second timeout
+    });
+
     if (!response.ok) {
       throw new Error('Error fetching news articles'); // Handle non-200 status codes
     }
-    currentNews = data.articles.slice(0, 30); // Get first 30 articles
+    currentNews = await response.json().slice(0, 30); // Get first 30 articles
     displayNews();
   } catch (error) {
     console.error('Error fetching news:', error);
-    showError('You seem to be disconnecteding. Retry'); // Display error message
+    setTimeout(() => {
+      loadingIndicator.style.display = 'none'; // Hide loading indicator after timeout
+      showError('You seem to be disconnected. Retry');
+    }, 10000); // Wait 10 seconds before showing error
+  } finally {
+    loadingIndicator.style.display = 'none'; // Ensure hiding indicator even on successful fetch
   }
 };
 
 const displayNews = () => {
-  newsContainer.innerHTML = ''; // Clear existing content
+  newsContainer.innerHTML = '';
   if (currentNews.length > 0) {
     // Display news articles if data is available
     currentNews.forEach((article) => {
