@@ -1,4 +1,4 @@
-const apiKey = 'YOUR_NEWS_API_KEY'; // Replace with your News API key
+const apiKey = '0ff106280b544f1e85c8824e6c53d9ff'; // Replace with your News API key
 const newsContainer = document.getElementById('news-container');
 const loadingIndicator = document.getElementById('loading-indicator'); // Assuming you have this element in your HTML
 const updateInterval = 1 * 60 * 60 * 1000; // 1 hour in milliseconds
