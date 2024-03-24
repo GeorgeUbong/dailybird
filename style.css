@@ -1,0 +1,86 @@
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 2rem;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+h1 {
+  font-size: 5rem;
+  font-family: 'Times New Roman', Times, serif;
+  margin-bottom: 0.5rem;
+}
+
+p {
+  font-size: 1.2rem;
+  color: #888;
+}
+
+#news-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+}
+
+.news-item {
+  border: 1px solid #ddd;
+  padding: 1rem;
+  border-radius: 4px;
+  display: flex; /* Added for image and content side-by-side */
+  flex-direction: column; /* Stack content below the image */
+}
+
+.news-item a {
+  color: #000;
+  text-decoration: none;
+}
+
+.news-item h3 {
+  margin-top: 0.5rem; /* Adjust margin after image */
+}
+
+.news-item p {
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.news-item img {
+  width: 100%; /* Stretch image to full width of news item */
+  height: auto; /* Maintain image aspect ratio */
+  object-fit: cover; /* Crop image to fit within container */
+  margin-bottom: 0.5rem; /* Add some margin below the image */
+}
+.supp{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.supp button{
+  height: 50px;
+  width: 150px;
+
+}
+.supp button a{
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: bold;
+  color: #43b427;
+}
+.footer{
+  background-color: #b8b8b8;
+}
+.footer h2{
+  text-align: center;
+  padding-top: 10px;
+}
+.footer p{
+  text-align: center;
+}
+.footer button{
+  height: 50px;
+  width: 180px;
+}
